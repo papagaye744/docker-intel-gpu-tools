@@ -38,6 +38,5 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PWD }}
 
       - name: Build the Docker image
-        if: steps.generate_tag.outputs.latest == 'false'
         run: |
           docker buildx build --push --platform linux/amd64 -t papagaye/docker-intel-gpu-tools:latest -t papagaye/docker-intel-gpu-tools:${TAG} .
