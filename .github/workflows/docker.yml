@@ -15,18 +15,18 @@ jobs:
       contents: read
     timeout-minutes: 60
     steps:
-    - name: Check out code
-      uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    - name: Set lower case owner name
-      run: |
-        echo "OWNER_LC=${OWNER,,}" >> ${GITHUB_ENV}
-        echo "TAG=v1.0.0" >> $GITHUB_ENV
-      env:
-        OWNER: '${{ github.repository_owner }}'
+      - name: Set lower case owner name
+        run: |
+          echo "OWNER_LC=${OWNER,,}" >> ${GITHUB_ENV}
+          echo "TAG=v1.0.0" >> $GITHUB_ENV
+        env:
+          OWNER: '${{ github.repository_owner }}'
 
-    - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+          uses: docker/setup-qemu-action@v3
 
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@v3
